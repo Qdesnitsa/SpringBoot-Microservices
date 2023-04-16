@@ -1,6 +1,7 @@
 package com.springboot.microservices.departmentservice.service.impl;
 
 import com.springboot.microservices.departmentservice.dto.DepartmentDto;
+import com.springboot.microservices.departmentservice.entity.Department;
 import com.springboot.microservices.departmentservice.repository.DepartmentRepository;
 import com.springboot.microservices.departmentservice.service.DepartmentService;
 import lombok.AllArgsConstructor;
@@ -14,6 +15,20 @@ public class DepartmentServiceImpl implements DepartmentService {
 
     @Override
     public DepartmentDto saveDepartment(DepartmentDto departmentDto) {
-        return null;
+        Department department = new Department(
+                departmentDto.getId(),
+                departmentDto.getDepartmentName(),
+                departmentDto.getDepartmentDescription(),
+                departmentDto.getDepartmentCode());
+
+        Department savedDepartment = departmentRepository.save(department);
+
+        DepartmentDto savedDepartmentDto = new DepartmentDto(
+                savedDepartment.getId(),
+                savedDepartment.getDepartmentName(),
+                savedDepartment.getDepartmentDescription(),
+                savedDepartment.getDepartmentCode());
+
+        return savedDepartmentDto;
     }
 }
