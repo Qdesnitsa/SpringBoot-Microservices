@@ -1,4 +1,4 @@
-package com.springboot.microservices.departmentservice.entity;
+package com.springboot.microservices.employeeservice.entity;
 
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
@@ -11,16 +11,17 @@ import lombok.Setter;
 @NoArgsConstructor
 @AllArgsConstructor
 @Entity
-@Table(name = "departments")
-public class Department {
+@Table(name = "employees")
+public class Employee {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    private String departmentName;
+    private String firstName;
 
-    private String departmentDescription;
+    private String lastName;
 
-    private String departmentCode;
+    @Column(nullable = false, unique = true)
+    private String email;
 }
