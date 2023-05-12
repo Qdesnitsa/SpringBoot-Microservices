@@ -1,4 +1,4 @@
-package com.springboot.microservices.departmentservice.controller;
+package com.springboot.microservices.employeeservice.controller;
 
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.cloud.context.config.annotation.RefreshScope;
@@ -11,7 +11,7 @@ public class MessageController {
     @Value("${spring.boot.message}")
     private String message;
 
-    @GetMapping("departments/message")
+    @GetMapping("users/message")
     public String showMessage() {
         return message;
     }
