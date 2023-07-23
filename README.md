@@ -14,6 +14,12 @@ docker run --rm -it -p 5672:5672 rabbitmq:3.11.15
 After editing config settings in config-server-repo on github call:
 POST http://localhost:{port}/actuator/busrefresh for any only 1 microservice
 
+4. Start Zipkin server gather for timing data needed to troubleshoot latency problems in service architectures.
+- download jar file and execute: java -jar zipkin-server-2.24.2-exec.jar
+OR
+- run as a docker container: docker run --rm -it --name zipkin -p 9411:9411 openzipkin/zipkin
+Go to http://127.0.0.1:9411/zipkin/
+
 ## find process we need to stop by port (run powershell as admin): netstat -ao | findstr :{port}
 ## stop process: taskkill -PID {process ID} -F
 
