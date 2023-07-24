@@ -20,6 +20,15 @@ OR
 - run as a docker container: docker run --rm -it --name zipkin -p 9411:9411 openzipkin/zipkin
 Go to http://127.0.0.1:9411/zipkin/
 
+5. The Circuit Breaker pattern has a different purpose than the "Retry pattern". 
+The "Retry pattern" enables an application to retry an operation with the expectation that the operation will eventually succeed. 
+The Circuit Breaker pattern prevents an application from performing an operation that's likely to fail.
+- Use the Retry pattern when the dependent microservice is temporarily down and after a few retries, it is a chance that it return success response (Once it is up)
+- Circuit Breaker pattern is useful in scenarios of long-lasting faults. Consider a loss of connectivity or the failure of a service that takes some time to repair itself. 
+In such cases, it may not be of much use to keep retrying often if it is indeed going to take a while to hear back from the server. 
+The Circuit Breaker pattern wants to prevent an application from performing an operation that is likely to fail. 
+Circuit Breaker pattern reduces the number of calls by maintaining the states and this leads to saving resources.
+
 ## find process we need to stop by port (run powershell as admin): netstat -ao | findstr :{port}
 ## stop process: taskkill -PID {process ID} -F
 
