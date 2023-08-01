@@ -3,6 +3,7 @@ package com.springboot.microservices.employeeservice.service.impl;
 import com.springboot.microservices.employeeservice.dto.ApiResponseDto;
 import com.springboot.microservices.employeeservice.dto.DepartmentDto;
 import com.springboot.microservices.employeeservice.dto.EmployeeDto;
+import com.springboot.microservices.employeeservice.dto.OrganizationDto;
 import com.springboot.microservices.employeeservice.entity.Employee;
 import com.springboot.microservices.employeeservice.mapper.EmployeeMapper;
 import com.springboot.microservices.employeeservice.repository.EmployeeRepository;
@@ -55,6 +56,12 @@ public class EmployeeServiceImpl implements EmployeeService {
                 .bodyToMono(DepartmentDto.class)
                 .block();
 
+        OrganizationDto organizationDto = webClient.get()
+                .uri("http://localhost:8083/api/organizations/" + employee.getOrganizationCode())
+                .retrieve()
+                .bodyToMono(OrganizationDto.class)
+                .block();
+
 //        DepartmentDto departmentDto = apiClient.getDepartment(employee.getDepartmentCode());
 
         EmployeeDto employeeDto = EmployeeMapper.mapToEmployeeDto(employee);
@@ -62,6 +69,7 @@ public class EmployeeServiceImpl implements EmployeeService {
         ApiResponseDto apiResponseDto = new ApiResponseDto();
         apiResponseDto.setEmployee(employeeDto);
         apiResponseDto.setDepartment(departmentDto);
+        apiResponseDto.setOrganization(organizationDto);
         return apiResponseDto;
     }
 
