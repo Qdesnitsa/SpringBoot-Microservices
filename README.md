@@ -29,6 +29,10 @@ In such cases, it may not be of much use to keep retrying often if it is indeed 
 The Circuit Breaker pattern wants to prevent an application from performing an operation that is likely to fail. 
 Circuit Breaker pattern reduces the number of calls by maintaining the states and this leads to saving resources.
 
+6. To create react frontend quickly type in VS Code terminal:
+   npx create-react-app my-app
+   cd my-app
+   npm start
 ## find process we need to stop by port (run powershell as admin): netstat -ao | findstr :{port}
 ## stop process: taskkill -PID {process ID} -F
 
