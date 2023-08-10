@@ -34,6 +34,7 @@ Circuit Breaker pattern reduces the number of calls by maintaining the states an
    cd my-app
    npm start
    npm install bootstrap --save
+   npm install axios --save
 ## find process we need to stop by port (run powershell as admin): netstat -ao | findstr :{port}
 ## stop process: taskkill -PID {process ID} -F
 
