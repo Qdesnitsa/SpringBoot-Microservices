@@ -35,6 +35,10 @@ Circuit Breaker pattern reduces the number of calls by maintaining the states an
    npm start
    npm install bootstrap --save
    npm install axios --save
+
+7. Swagger 
+http://localhost:{port}/swagger-ui/index.html
+http://localhost:{port}/v3/api-docs
 ## find process we need to stop by port (run powershell as admin): netstat -ao | findstr :{port}
 ## stop process: taskkill -PID {process ID} -F
 
